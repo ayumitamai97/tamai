@@ -7,16 +7,18 @@ require "pry"
 class Tamai
   def self.station(postal)
     search(postal)
-    puts @station
-    # @name = @station["name"]
-    # @kana = @station["kana"]
-    # @line = @station["line"]
-    # @latitude = @station["y"]
-    # @longtitude = @station["x"]
-    # @distance = @station["distance"]
-    # @prefecture = @station["prefecture"]
-    # @prev_@station = @station["prev"]
-    # @next_@station = @station["next"]
+    name = @station["name"]
+    kana = @station["kana"]
+    line = @station["line"]
+    distance = @station["distance"]
+    prev_station = @station["prev"]
+    next_station = @station["next"]
+    # prefecture = @station["prefecture"]
+    # latitude = @station["y"]
+    # longtitude = @station["x"]
+    puts "最寄駅: " + line + " " + name + " （" + kana + "）駅"
+    puts "隣駅: " + prev_station + "、" + next_station
+    puts "ここから約" + distance + "m"
   end
   
   private
