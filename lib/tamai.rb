@@ -35,9 +35,9 @@ class Tamai
   def self.search(postal)
     postal_encoded = URI.encode postal
     json = Net::HTTP.get(URI.parse("http://geoapi.heartrails.com/api/json?method=getStations&postal=#{postal_encoded}"))
-    JSON.parse(json)
+    station = JSON.parse(json)["response"]["station"]
 
-    @station = JSON.parse(json)["response"]["station"][0]
+    station.nil? ? return : @station = station[0]
   end
 
   def self.validate(postal)
@@ -47,16 +47,17 @@ class Tamai
       postal.gsub!("-", "")
       return true
     else
-      puts "郵便番号を半角数字で入力してください"
+      puts "7桁の郵便番号を半角数字で入力してください"
+      puts "（ハイフンの有無は問いません）"
       return false
     end
   end
 
   def self.correct?(postal)
-    /\d{7}/.match(postal)
+    /^\d{7}$/.match(postal)
   end
 
   def self.correct_containing_hyphen?(postal)
-    /\d{3}-\d{4}/.match(postal)
+    /^\d{3}-\d{4}$/.match(postal)
   end
 end
