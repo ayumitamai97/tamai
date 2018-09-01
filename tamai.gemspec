@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ayumitamai97@gmail.com"]
 
   spec.summary       = %q{Input postal code in Japan and you can get a nearest station.}
-  spec.description   = %q{I have nothing to say more.}
+  spec.description   = %q{Input postal code in Japan and you can get a nearest station. / 日本の郵便番号を入れると最寄駅を返す。 / 某社インターンで作成したネタgem。}
   spec.homepage      = "https://github.com/ayumitamai97/tamai"
   spec.license       = "MIT"
 
