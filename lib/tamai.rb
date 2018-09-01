@@ -27,7 +27,13 @@ class Tamai
     # longtitude = @station["x"]
 
     puts "最寄駅: " + line + " " + name + " （" + kana + "）駅"
-    puts "隣駅: " + prev_station + "、" + next_station
+    if prev_station.nil?
+      puts "隣駅: " + next_station
+    elsif next_station.nil?
+      puts "隣駅: " + prev_station
+    else
+      puts "隣駅: " + prev_station + "、" + next_station
+    end
     puts "ここから約" + distance + "m"
   end
   
