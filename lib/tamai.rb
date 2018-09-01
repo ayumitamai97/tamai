@@ -2,7 +2,6 @@ require "tamai/version"
 require "uri"
 require "net/http"
 require "json"
-require "pry"
 
 class Tamai
   def self.station(postal)
@@ -43,10 +42,10 @@ class Tamai
 
   def self.validate(postal)
     if correct?(postal)
-      return
+      return true
     elsif correct_containing_hyphen?(postal)
       postal.gsub!("-", "")
-      return
+      return true
     else
       puts "郵便番号を半角数字で入力してください"
       return false
@@ -54,7 +53,7 @@ class Tamai
   end
 
   def self.correct?(postal)
-    /\d{3}-\d{4}/.match(postal)
+    /\d{7}/.match(postal)
   end
 
   def self.correct_containing_hyphen?(postal)
